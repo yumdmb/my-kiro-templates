@@ -43,11 +43,11 @@ COMMENT ON TABLE public.table_name IS 'description';
 ```
 
 **Never:**
-- ❌ Make schema changes directly in remote Studio
-- ❌ Skip local testing
-- ❌ Modify applied migrations
-- ❌ Push without generating types
-- ❌ Change `.env.local` to push migrations (CLI uses project link!)
+- Make schema changes directly in remote Studio
+- Skip local testing
+- Modify applied migrations
+- Push without generating types
+- Change `.env.local` to push migrations (CLI uses project link!)
 
 **Environment:**
 ```env
@@ -79,21 +79,21 @@ Get keys: `npx supabase status` → Copy "API URL" and "Publishable key"
 
 1. **@typescript-eslint/no-unused-vars** - Unused variables/imports
    ```typescript
-   // ❌ BAD - Will cause build error
+   // BAD - Will cause build error
    import { useState } from 'react';
    const unusedVar = 'test';
    
-   // ✅ GOOD - Remove unused code
+   // GOOD - Remove unused code
    // Or prefix with underscore if intentionally unused
    const _intentionallyUnused = 'test';
    ```
 
 2. **@typescript-eslint/no-explicit-any** - Using `any` type
    ```typescript
-   // ❌ BAD - Will cause build error
+   // BAD - Will cause build error
    function process(data: any) { }
    
-   // ✅ GOOD - Use proper types
+   // GOOD - Use proper types
    function process(data: unknown) { }
    function process(data: Record<string, unknown>) { }
    // Or for rest args (allowed by config)
@@ -102,23 +102,23 @@ Get keys: `npx supabase status` → Copy "API URL" and "Publishable key"
 
 3. **@typescript-eslint/no-unsafe-assignment** - Unsafe type assignments
    ```typescript
-   // ❌ BAD
+   // BAD
    const data: any = fetchData();
    const value = data.something;
    
-   // ✅ GOOD
+   // GOOD
    const data = fetchData() as MyType;
    const value = data.something;
    ```
 
 4. **@typescript-eslint/no-unsafe-member-access** - Accessing properties on `any`
    ```typescript
-   // ❌ BAD
+   // BAD
    function process(obj: any) {
      return obj.property;
    }
    
-   // ✅ GOOD
+   // GOOD
    function process(obj: { property: string }) {
      return obj.property;
    }
@@ -126,11 +126,11 @@ Get keys: `npx supabase status` → Copy "API URL" and "Publishable key"
 
 5. **@typescript-eslint/no-unsafe-call** - Calling functions with `any` type
    ```typescript
-   // ❌ BAD
+   // BAD
    const fn: any = getSomeFunction();
    fn();
    
-   // ✅ GOOD
+   // GOOD
    const fn = getSomeFunction() as () => void;
    fn();
    ```
@@ -152,13 +152,13 @@ Get keys: `npx supabase status` → Copy "API URL" and "Publishable key"
 
 **Common patterns to avoid:**
 ```typescript
-// ❌ Avoid these patterns
+// Avoid these patterns
 const data: any = await fetch();
 let result: any;
 function handler(event: any) { }
 const items: any[] = [];
 
-// ✅ Use these instead
+// Use these instead
 const data: unknown = await fetch();
 const data = await fetch() as MyType;
 let result: MyType | undefined;
@@ -204,7 +204,7 @@ type Params = Record<string, string | number>;
 
 **Example Format:**
 ```
-✅ Task Complete: [Task Name]
+Task Complete: [Task Name]
 
 Changes Made:
 - Created X component
